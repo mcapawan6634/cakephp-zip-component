@@ -1,0 +1,11 @@
+{
+  "name": "otoso/cakephp-zip-component",
+  "description" : "A component for creating and reading zip files for cakePHP 2.x",
+  "license" : "MIT",
+  "type" : "cakephp-plugin",
+  "authors": [
+  ],
+  "require" : {
+    "composer/installers": "*"
+  }
+}
