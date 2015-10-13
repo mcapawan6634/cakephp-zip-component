@@ -149,8 +149,8 @@ class ZipComponent extends Component
 		} else {
 			$mixed = explode(',', $mixed);
 			if (in_array($mixed[0], [
-					'*',
-					'all'
+				'*',
+				'all'
 			])) {
 				if (!$this->zip->unchangeAll()) {
 					return false;
@@ -212,24 +212,18 @@ class ZipComponent extends Component
 	 */
 	function delete($mixed)
 	{
-		if (is_array($mixed)) {
-			foreach ($mixed as $value) {
-				$constant = is_string($value) ? 'Name' : 'Index';
-				if (!$this->zip->{'delete' . $constant}($value)) {
-					return false;
-				}
-			}
-		} else {
+		if (!is_array($mixed)) {
 			$mixed = explode(',', $mixed);
-			foreach ($mixed as $value) {
-				$constant = is_string($value) ? 'Name' : 'Index';
-				if (!$this->zip->{'delete' . $constant}($value)) {
-					return false;
-				}
+		}
+
+		foreach ($mixed as $value) {
+			$constant = is_string($value) ? 'Name' : 'Index';
+			if (!$this->zip->{'delete' . $constant}($value)) {
+				return false;
 			}
 		}
-		return true;
-	}
+        return true;
+    }
 
 	/**
 	 * Add a comment to archive or file.
